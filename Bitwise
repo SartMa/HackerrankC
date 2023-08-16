@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+//Complete the following function.
+
+
+void calculate_the_maximum(int n, int k) {
+  int arr[n];
+  int bit_and = 0;
+  int bit_or = 0;
+  int bit_xor = 0;
+  
+  for(int i = 1; i<n; i++){
+      for(int j = i+1; j<=n; j++){
+          int b_and = j&i;
+          int b_or = j|i;
+          int b_xor = j^i;
+
+          if(b_and>bit_and && b_and < k){
+              bit_and = b_and;
+          }
+          if(b_or>bit_or && b_or < k){
+              bit_or = b_or;
+          }
+          if(b_xor>bit_xor && b_xor < k){
+              bit_xor = b_xor;
+          }
+      }
+  }
+  printf("%d\n%d\n%d", bit_and, bit_or, bit_xor);
+  
+}
+
+int main() {
+    int n, k;
+  
+    scanf("%d %d", &n, &k);
+    calculate_the_maximum(n, k);
+ 
+    return 0;
+}
